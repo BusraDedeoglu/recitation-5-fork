@@ -66,6 +66,11 @@ int dynarray_size(struct dynarray* da) {
  */
 void _dynarray_resize(struct dynarray* da, int new_capacity) {
   assert(new_capacity > da->size);
+ /*
+   * Calculate the new capacity by adding a constant value k.
+   */
+  int k = 4; // You can experiment with different values of k.
+  new_capacity += k;
 
   /*
    * Allocate space for the new array.
@@ -87,6 +92,7 @@ void _dynarray_resize(struct dynarray* da, int new_capacity) {
   da->data = new_data;
   da->capacity = new_capacity;
 }
+ 
 
 /*
  * This function inserts a new value to a given dynamic array.  The new element
